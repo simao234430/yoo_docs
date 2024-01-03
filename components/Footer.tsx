@@ -1,32 +1,111 @@
-import Link from './Link'
-import siteMetadata from '@/data/siteMetadata'
-import SocialIcon from '@/components/social-icons'
+import Link from 'next/link'
+import { FC } from 'react'
+import { Logo } from './Logo'
+ 
+ 
 
-export default function Footer() {
+const isExternalUrl = (link: string): boolean => {
+  return !link.startsWith('/')
+}
+
+const content = {
+  note: (
+    <>
+      <p>
+        MIT Licenced - A project by{' '}
+        <Link
+          href="https://www.stackbit.com/"
+          target="_blank"
+          className="text-primary-600 underline dark:text-primary-400"
+          rel="noreferrer"
+        >
+          Stackbit
+        </Link>
+      </p>
+      <p className="mt-2">
+        Made with 💜 by{' '}
+        <Link href="https://twitter.com/schickling">
+          <div className="hover:text-slate-700 dark:hover:text-slate-300" target="_blank" rel="noreferrer">
+            @schickling
+          </div>
+        </Link>{' '}
+        & community
+      </p>
+    </>
+  ),
+  menus: [
+    {
+      title: 'Docs',
+      elements: [
+        { label: 'Getting Started', url: '/docs/getting-started' },
+        { label: 'Concepts', url: '/docs/concepts' },
+        { label: 'Sources', url: '/docs/sources' },
+        { label: 'Environments', url: '/docs/environments' },
+        { label: 'API Reference', url: '/docs/reference' },
+      ],
+    },
+    {
+      title: 'Examples',
+      elements: [
+        {
+          label: 'Next.js (TypeScript)',
+          url: '/examples/nextjs',
+        },
+      ],
+    },
+    {
+      title: 'Community',
+      elements: [
+        { label: 'Twitter', url: 'https://twitter.com/contentlayerdev' },
+        { label: 'Discord', url: 'https://discord.gg/rytFErsARm' },
+        { label: 'GitHub', url: 'https://github.com/contentlayerdev/contentlayer' },
+      ],
+    },
+  ],
+}
+
+export const Footer: FC = () => {
   return (
-    <footer>
-      <div className="mt-16 flex flex-col items-center">
-        <div className="mb-3 flex space-x-4">
-          <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
-          <SocialIcon kind="github" href={siteMetadata.github} size={6} />
-          <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
-          <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
-          <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
-          <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
-        </div>
-        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{siteMetadata.author}</div>
-          <div>{` • `}</div>
-          <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
-          <Link href="/">{siteMetadata.title}</Link>
-        </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
-            Tailwind Nextjs Theme
+    <div className="border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900/50">
+      <div className="mx-auto w-full max-w-screen-2xl space-y-8 px-4 py-8 md:p-8 md:pb-12 lg:flex lg:justify-between lg:space-y-0 lg:p-16 lg:pb-20">
+        <div>
+          <Link href="/">
+            <div className="flex items-center space-x-2.5 font-bold text-slate-800 no-underline dark:text-white">
+              <Logo />
+              <span>Contentlayer</span>
+            </div>
           </Link>
+          <div className="mt-4 text-sm text-slate-500 dark:text-slate-400">{content.note}</div>
+        </div>
+        <div className="space-y-8 md:flex md:space-y-0 md:space-x-16">
+          {content.menus.map(({ title, elements }, index) => (
+            <div key={index}>
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-800 dark:text-slate-200">
+                {title}
+              </h4>
+              <ul className="mx-0 mt-4 list-none space-y-2 text-sm">
+                {elements.map(({ label, url }, index) => (
+                  <li key={index}>
+                    <Link href={url}>
+                      <div
+                        className="inline-flex items-center space-x-1 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300"
+                        target={isExternalUrl(url) ? '_blank' : undefined}
+                      >
+                        <span>{label}</span>
+                        {isExternalUrl(url) && (
+                          <span className="inline-block w-4">
+                            {/* <Icon name="external-link" /> */}
+                          </span>
+                        )}
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
-    </footer>
+    </div>
   )
 }
