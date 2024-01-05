@@ -38,9 +38,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           </SearchProvider>
           <div className="flex min-h-screen flex-col justify-between"> 
-          <SectionContainer>
+          {/* <SectionContainer> */}
                 <main className="my-20">{children}</main>
-                </SectionContainer>
+                {/* </SectionContainer> */}
                 </div>
           <Footer />
         </ThemeProviders>

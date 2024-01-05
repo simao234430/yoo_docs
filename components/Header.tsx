@@ -7,7 +7,7 @@ import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 import { Label } from './Label'
-import { Icon } from './Icon'
+import { Icon } from './common/Icon'
 import { usePathname } from 'next/navigation'
 const isExternalUrl = (link: string): boolean => !link.startsWith('/')
 const navLinks: Array<{ label: string; url: string }> = [

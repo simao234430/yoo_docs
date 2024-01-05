@@ -58,6 +58,8 @@ const securityHeaders = [
 ]
 
 
+
+
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
@@ -70,13 +72,20 @@ module.exports = () => {
         dirs: ['app', 'components', 'layouts', 'scripts'],
       },
       images: {
+        domains: ['pbs.twimg.com', 'avatars.githubusercontent.com', 'i.imgur.com','localhost',
+        'localhost:3000'],
         remotePatterns: [
           {
             protocol: 'https',
             hostname: 'picsum.photos',
           },
+          {
+            protocol: 'https',
+            hostname: 'i.imgur.com',
+          },
         ],
       },
+ 
       async headers() {
         return [
           {
@@ -85,14 +94,23 @@ module.exports = () => {
           },
         ]
       },
-      webpack: (config, options) => {
-        config.module.rules.push({
-          test: /\.svg$/,
-          use: ['@svgr/webpack'],
-        })
+      // headers: async () => [
+      //   {
+      //     source: '/:path*',
+      //     headers: [
+      //       { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+      //       { key: 'Cross-Origin-Embedder-Policy', value: 'same-origin' },
+      //     ],
+      //   },
+      // ],
+      // webpack: (config, options) => {
+      //   config.module.rules.push({
+      //     test: /\.svg$/,
+      //     use: ['@svgr/webpack'],
+      //   })
   
-        return config
-      },
+      //   return config
+      // },
     })
   }
   

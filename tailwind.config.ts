@@ -14,6 +14,9 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        '1.5xl': '1440px',
+      },
       lineHeight: {
         11: '2.75rem',
         12: '3rem',
