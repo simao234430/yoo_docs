@@ -14,6 +14,9 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
+      fill: {
+        current: 'currentColor',
+      },
       screens: {
         '1.5xl': '1440px',
       },

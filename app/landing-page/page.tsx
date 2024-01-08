@@ -28,7 +28,7 @@ export default function LandPage() {
       <Testimonials usedByCount={999} />
       <Features />
  
-      {/* <HowItWorks codeSnippets={codeSnippets} /> */}
+      <HowItWorks codeSnippets={codeSnippets} />
       <Playground />
       <FAQ />
       <Tweets />

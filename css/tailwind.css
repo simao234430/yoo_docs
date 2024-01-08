@@ -1,3 +1,4 @@
+ 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,4 +33,17 @@ input:-webkit-autofill:focus {
 
 .katex-display {
   overflow: auto hidden;
+}
+
+
+svg {
+  @apply max-w-full;
+}
+
+.svg-h-full svg {
+  @apply h-full;
+}
+
+svg path {
+  fill: currentColor;
 }

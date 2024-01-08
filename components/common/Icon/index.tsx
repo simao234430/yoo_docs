@@ -140,5 +140,5 @@ const iconMap = {
 
 export const Icon: FC<{ name: IconName }> = ({ name }) => {
   const IconComponent = iconMap[name]
-  return <IconComponent />
+  return <IconComponent  />
 }

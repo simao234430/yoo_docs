@@ -2,7 +2,7 @@ import { type FC } from 'react'
 import * as Tabs from '@radix-ui/react-tabs'
 import * as ScrollArea from '@radix-ui/react-scroll-area'
 import { Card } from '../common/Card'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 export interface CodeSnippet {
   file: string
@@ -10,12 +10,14 @@ export interface CodeSnippet {
   lines: number
 }
 
-export const CodeWindow: FC<{
+export  const  CodeWindow: FC<{
   snippets: readonly CodeSnippet[]
 }> = ({ snippets }) => {
   const router = useRouter()
+
+ 
   return (
-    <Card shadow className={router.pathname.split('/')[1] == 'blog' ? 'mb-8' : 'mb-0'}>
+    <Card shadow  >
       <Tabs.Root defaultValue={snippets[0].file}>
         <Tabs.List aria-label="Select file to view" className="flex flex-nowrap overflow-x-auto">
           <div className="flex h-10 items-center space-x-1.5 border-r border-b border-gray-100 px-4 dark:border-gray-900">
@@ -47,12 +49,16 @@ export const CodeWindow: FC<{
               <ScrollArea.Root className="w-full overflow-hidden bg-white dark:bg-[#0D1116]">
                 <ScrollArea.Viewport>
                   {/* <div
-                    // className={`text-[13] not-prose ${
-                    //   router.pathname.split('/')[1] == 'blog' ? '-mt-[30px]' : '-mt-[20px]'
-                    // } -mb-[40px]`}
+                    className={`text-[13] not-prose ${
+                      router.pathname.split('/')[1] == 'blog' ? '-mt-[30px]' : '-mt-[20px]'
+                    } -mb-[40px]`}
                     dangerouslySetInnerHTML={{ __html: content }}
                   /> */}
+                  <div
+                    className={`text-[13]`}>
                   {content}
+                    </div>
+
                 </ScrollArea.Viewport>
                 <ScrollArea.Scrollbar orientation="horizontal">
                   <ScrollArea.Thumb className="relative" />

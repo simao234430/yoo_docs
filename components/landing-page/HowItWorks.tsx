@@ -219,7 +219,7 @@ export const notionStep2DataTransformation = {
   from: {
     type: 'image',
     data: {
-      url: '/images/notion-contentlayer-source.png',
+      url: '/static/images/notion-contentlayer-source.png',
       alt: 'Notion Contentlayer source',
       width: 1628,
       height: 1035,
@@ -470,6 +470,7 @@ export const HowItWorks: FC<{ codeSnippets: CodeSnippets }> = ({ codeSnippets })
                     <CodeWindow snippets={codeSnippets[codeSnippetsKey]} />
                   </div>
                 )} */}
+                          <CodeWindow snippets={codeSnippets['howItWorksStep1']} />
               </div>
             ))}
           </Tabs.Content>
