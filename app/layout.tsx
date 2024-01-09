@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 // import { Inter } from 'next/font/google'
-import './globals.css'
+import '@/css/globals.css'
+ 
 import { ThemeProviders } from './theme-providers'
 import SectionContainer from '@/components/SectionContainer'
 import Header from '@/components/Header'
@@ -39,7 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </SearchProvider>
           <div className="flex min-h-screen flex-col justify-between"> 
           {/* <SectionContainer> */}
-                <main className="my-20">{children}</main>
+                <main         style={{ scrollPaddingTop: '150px' }} className="relative pt-16"  >{children}</main>
                 {/* </SectionContainer> */}
                 </div>
           <Footer />
