@@ -65,7 +65,7 @@ const Pre = ({ children }: { children: ReactNode }) => {
       )}
 
  
-     <pre className='max-w-screen-md'>{children}</pre>
+     <pre    >{children}</pre>
  
     </div>
   )

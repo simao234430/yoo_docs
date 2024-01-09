@@ -9,6 +9,7 @@ import SearchButton from './SearchButton'
 import { Label } from './Label'
 import { Icon } from './common/Icon'
 import { usePathname } from 'next/navigation'
+import {SearchButton1} from './SearchButton1'
 const isExternalUrl = (link: string): boolean => !link.startsWith('/')
 const navLinks: Array<{ label: string; url: string }> = [
   { label: 'Documentation', url: '/docs' },
@@ -19,6 +20,8 @@ const navLinks: Array<{ label: string; url: string }> = [
   // NOTE until we have a proper example overview page and multiple examples, link directly to Next.js example
   { label: 'Examples', url: '/examples/nextjs' },
 ]
+
+ 
 
 const NavLink: FC<{ label?: string; hideLabel?: boolean; icon?: IconName; url: string }> = ({
   label,
@@ -76,9 +79,12 @@ const Header = () => {
           {navLinks.map(({ label, url }, index) => (
    <NavLink key={index} label={label} url={url} icon={isExternalUrl(url) ? 'external-link' : undefined} />
             ))}
-            <div className="px-3">
-              <SearchButton />
+          
+          <div className="px-3">
+          <SearchButton1 showShortcut={false} />
             </div>
+   
+          
           </div>
           <div className="flex items-center pl-2 lg:space-x-2 lg:pl-8">
             <ThemeSwitch />
@@ -97,3 +103,7 @@ const Header = () => {
 }
 
 export default Header
+function useKBar(): { query: any } {
+  throw new Error('Function not implemented.')
+}
+
