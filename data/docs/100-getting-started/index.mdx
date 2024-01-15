@@ -4,6 +4,18 @@ title: Getting Started
 excerpt: Get comfortable with the basics of Contentlayer by showing how we can quickly build a blog site using Next.js.
 ---
 
+```sql:test.sql
+SELECT COUNT( distinct customer_id) FROM sales WHERE sales_date = '2023-03-10'; 
+SELECT operator_statistics:pruning  FROM TABLE(GET_QUERY_OPERATOR_STATS(LAST_QUERY_ID())) WHERE operator_type='TableScan';
+
+
++---------------------------------------------------------+
+|               OPERATOR_STATISTICS:PRUNING               |
++---------------------------------------------------------+
+| {   "partitions_scanned": 2,   "partitions_total": 41 } |
++---------------------------------------------------------+
+```
+
 This tutorial will get you comfortable with the basics of Contentlayer by walking through how to build a simple blog site using Next.js.
 
 The blog will include a list of posts with a title, body, and date, rendered with the most recent on top. And each post will have its own page.

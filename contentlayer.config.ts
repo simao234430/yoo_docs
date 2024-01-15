@@ -181,6 +181,22 @@ export const Example = defineDocumentType(() => ({
           return { order, pathName }
         }),
     },
+    headings: {
+      type: 'json',
+      resolve: async (doc) => {
+        const headings: DocHeading[] = []
+
+        await bundleMDX({
+          source: doc.body.raw,
+          mdxOptions: (opts) => {
+            opts.remarkPlugins = [...(opts.remarkPlugins ?? []), tocPlugin(headings)]
+            return opts
+          },
+        })
+
+        return [{ level: 1, title: doc.title }, ...headings]
+      },
+    },
     last_edited: { type: 'date', resolve: getLastEditedDate },
   },
   extensions: {},
@@ -340,7 +356,7 @@ export default makeSource({
     onSuccess: async (importData) => {
       const { allBlogs,allDocs } = await importData()
       createTagCount(allBlogs)
-      createSearchIndex(allBlogs)
-      createSearchIndex(allDocs)
+      // createSearchIndex(allBlogs)
+      // createSearchIndex(allDocs)
     },
 })

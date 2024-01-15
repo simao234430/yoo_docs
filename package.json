@@ -22,6 +22,7 @@
     "date-fns": "^3.1.0",
     "github-slugger": "^1.4.0",
     "gray-matter": "^4.0.2",
+    "jspdf": "^2.5.1",
     "markdown-to-jsx": "^7.2.1",
     "next": "14.0.3",
     "next-contentlayer": "0.3.4",
@@ -39,7 +40,8 @@
     "remark": "^14.0.2",
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
-    "shiki-twoslash": "^3.0.2"
+    "shiki-twoslash": "^3.0.2",
+    "tailwindcss-radix": "^1.6.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
